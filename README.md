@@ -1,61 +1,101 @@
-# Structural Analysis using Direct Stiffness Method
+# Elastic Structural Analysis of 2-D Structures Using the Direct Stiffness Method
 
-This repository contains the report detailing the implementation and findings derived from the Python code developed to execute the Direct Stiffness Method (DSM) for structural analysis. The report highlights the comparison of results obtained from the developed code with those from STAAD Pro.
+This repository contains a Python implementation of the **Direct Stiffness Method (DSM)** for performing elastic structural analysis of 2D structures. The method is commonly used for analyzing statically indeterminate frames and other complex structures.
 
-## Table of Contents
+## Project Objective
 
-- [Introduction](#introduction)
-- [Report Overview](#report-overview)
-- [Key Findings](#key-findings)
-- [File Description](#file-description)
-- [Conclusion](#conclusion)
-- [Contributions](#contributions)
-- [License](#license)
+Develop a generic Python code to:
+- Take geometry and loading details as input.
+- Perform structural analysis using the **Direct Stiffness Method**.
 
-## Introduction
+The implementation has been validated against results from **STAAD Pro**, with a marginal error of ~2%, demonstrating its effectiveness.
 
-The Direct Stiffness Method (DSM) is a fundamental approach in structural analysis used to analyze the behavior of structures under various loading conditions. This report presents the results of implementing DSM in Python, focusing on its application in structural analysis and comparison with commercial software, STAAD Pro.
+---
 
-## Report Overview
+## Features
 
-The key sections of the report include:
+- Computes **global stiffness matrix** and **fixed-end force vectors** for structural elements.
+- Solves for **displacement vectors** and **reaction forces**.
+- Calculates **member-end forces** and **moments**.
+- Incorporates support settlement considerations for real-world applications.
 
-- **Moments**: This section discusses the sample input files for member data used in the analysis.
-- **Reactions**: An overview of the reaction forces computed in the analysis.
-- **Structure Analysis**: Detailed descriptions of the two structures analyzed, including their resultant displacements and a comparative analysis with STAAD Pro.
+---
 
-### File Description
+## Methodology
 
-- **website-1733057804095-Report.pdf**: This document includes:
-  - **Moments**: Sample input files for member actions and loading.
-  - **Reactions**: Tabulated results showing the reactions at supports.
-  - **Structures Analysis**:
-    - **Structure 1**: Resultant displacements from the analysis and comparisons with STAAD Pro outputs.
-    - **Structure 2**: Further analyses highlighted with graphical presentations and numerical comparisons.
+1. **Input Data**:
+   - Structural geometry, material properties, and loading details.
 
-## Key Findings
+2. **Transformation Matrices**:
+   - Converts local coordinate matrices to global coordinate matrices.
 
-In summary, the Python code developed for implementing the Direct Stiffness Method showed promising results. The findings include:
+3. **Stiffness Matrix Assembly**:
+   - Builds the global stiffness matrix from individual member matrices.
 
-- A comparison with STAAD Pro yielded a marginal difference of approximately 2%, indicating the code's effectiveness.
-- The differences between the two methods can be attributed to factors such as numerical approximation, element discretization, and computational precision.
-- The code's capabilities were enhanced by incorporating considerations for support settlement in a portal frame, contributing to a more comprehensive analysis of real-world structural behavior.
+4. **Force and Displacement Analysis**:
+   - Solves for active displacement vectors using matrix operations.
+   - Computes reaction forces and moments for supports.
+
+5. **Validation**:
+   - Results validated against **STAAD Pro** for multiple structural models.
+
+---
+<!-- 
+## Sample Output
+
+### Structure 1
+- **Displacements**:
+  - Python code: `Δ = [values]`
+  - STAAD Pro: `Δ = [values]`
+- **Moments**: ...
+- **Reactions**: ...
+
+(Include graphs or tables here)
+
+--- -->
+
+## Repository Contents
+
+- **`Direct_Stiffness_Method.ipynb`**: Python implementation in Jupyter Notebook.
+- **`Report.pdf`**: Detailed project report, including methodology, results, and validation.
+- **Sample Input Files**:
+  - Node data
+  - Member data
+
+---
+
+## Requirements
+
+- Python 3.x
+- Libraries:
+  - NumPy
+  - Matplotlib (for optional visualization)
+
+---
+
+## Validation Results
+
+The Python code results are compared against **STAAD Pro**, demonstrating a marginal error of ~2%, attributed to:
+- Numerical approximations
+- Element discretization
+- Computational precision
+
+---
 
 ## Conclusion
 
-The report demonstrates the viability of using the Direct Stiffness Method in Python for structural analysis. The results obtained show a close alignment with established software, validating the approach and its potential application in engineering practices.
+The Python implementation of the **Direct Stiffness Method** provides a reliable and accurate tool for structural analysis, with minimal error compared to industry-standard software. The incorporation of support settlement and other practical considerations makes it a versatile tool for academic and professional applications.
 
-## Contributions
+---
 
-Contributions to this project are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
+## Contributors
+
+- Bhanu Pratap  
+- Mohit Bansal  
+- Rohan Choudhary  
+
+---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-- A special thanks to the contributors of the DSM methodology and techniques. 
-- Acknowledgment of tools and libraries used in the implementation of the project.
-
-For any further questions or inquiries, please feel free to reach out via GitHub issues or directly through the contact information provided in the report.
+This project is licensed under the [MIT License](LICENSE).
